@@ -1,20 +1,24 @@
-from sqlalchemy import Integer, String, Float
-from sqlalchemy.orm import Mapped, mapped_column
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import Float, Integer, String
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy_serializer import SerializerMixin
 
+
 class Base(DeclarativeBase):
-  pass
+    pass
+
 
 db = SQLAlchemy(model_class=Base)
+
 
 def init_app(app):
     db.init_app(app)
 
-    from loja.model import populate_db
     with app.app_context():
-        db.drop_all()
+       
         db.create_all()
-        populate_db()
-
+        
+    
+        from loja.model import Product, populate_db
+        if not Product.query.first():
+            populate_db()

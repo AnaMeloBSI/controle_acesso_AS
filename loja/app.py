@@ -1,10 +1,10 @@
 from flask import Flask
-from loja.ext import database, admin, appearance, configuration
-from loja.blueprints import webui, restapi
+from loja.blueprints import restapi, webui
+from loja.ext import admin, appearance, configuration, database
 
-def create_app(**config): 
 
-    app = Flask(__name__, template_folder='templates')
+def create_app(**config):
+    app = Flask(__name__)
     configuration.init_app(app, **config)
     database.init_app(app)
     appearance.init_app(app)
@@ -13,5 +13,3 @@ def create_app(**config):
     restapi.init_app(app)
 
     return app
-
-

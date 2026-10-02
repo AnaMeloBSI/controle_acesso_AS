@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login Administrativo{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Login Administrativo</h2>
+
+    <form method="POST" action="{{ url_for('webui.login') }}">
+        <div class="mb-3">
+            <label for="usuario" class="form-label">
+                Usuário
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="usuario"
+                name="usuario"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="senha"
+                name="senha"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Entrar
+        </button>
+    </form>
+</div>
+
+{% endblock %}

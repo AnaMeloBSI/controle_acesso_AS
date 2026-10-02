@@ -4,7 +4,7 @@ from .resources import ProductResource
 
 bp = Blueprint("restapi", __name__, url_prefix="/api/v1")
 api = Api(bp)
-api.add_resource(ProductResource, "/product/")
+api.add_resource(ProductResource, "/product", "/product/")
 
 def init_app(app):
     app.register_blueprint(bp)
